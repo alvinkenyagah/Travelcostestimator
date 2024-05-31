@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>COST CALCULATOR</title>
+</head>
+<body>
+    
+    <h1>Fuel cost estimator</h1>
+
+    <form id="form">
+        <label for="fuelcost">
+            Fuel Cost:
+            <input type="number" name="fuelcost" id="fuelcost" placeholder="Enter fuel price" required>
+        </label>
+
+        
+        <label for="distance">
+            Distance:
+            <input type="number" name="distance" id="distance" placeholder="Enter distance"required>
+        </label>
+
+        <label for="mpg">
+            Average MPG:
+            <input type="number" name="mpg" id="mpg" placeholder=" Enter average MPG" required>
+        </label>
+        
+        <input type="submit" placeholder="Calculate cost">
+
+    </form>
+
+    <div id="result">
+
+    </div>
+
+    
+</body>
+<script src="./script.js"></script>
+</html>
