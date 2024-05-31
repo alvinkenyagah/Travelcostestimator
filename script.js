@@ -4,14 +4,22 @@ let form = document.getElementById("form")
 form.addEventListener("submit", (e)=>{
 
 
-    let fuelcost= document.getElementById("fuelcost").value
-    let mpg = document.getElementById("mpg").value
-    let distance = document.getElementById("distance").value
+    let fuelcost= parseFloat(document.getElementById("fuelcost").value)
+    let mpg = parseFloat(document.getElementById("mpg").value)
+    let distance = parseFloat(document.getElementById("distance").value)
 
-    let result = document.getElementById("result")
+    let result = parseFloat(document.getElementById("result"))
 
     let estimatedCost = fuelcost*distance/mpg
 
+    if(fuelcost || mpg || distance != typeof(0.01) || NaN){
+        result.innerHTML = `
+        
+        <h1 style="color:red; ">Error please input a valid number<h1/>
+        
+        `
+    }
+    else {
     result.innerHTML= `
     
     <table>
@@ -36,7 +44,7 @@ form.addEventListener("submit", (e)=>{
 
     
     `
-
+    }
 
 
     e.preventDefault()
