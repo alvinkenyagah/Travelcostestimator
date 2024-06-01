@@ -12,6 +12,9 @@ body {
     color: #f4f4f4;
 }
 
+h1{
+    text-align: center;
+}
 /* Container for the form */
 form {
     max-width: 500px;

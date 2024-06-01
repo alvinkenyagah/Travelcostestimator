@@ -1,51 +1,53 @@
+// Get the form element
+let form = document.getElementById("form");
 
-let form = document.getElementById("form")
+// Add an event listener for form submission
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
 
-form.addEventListener("submit", (e)=>{
+    // Retrieve and parse input values
+    let fuelCost = parseFloat(document.getElementById("fuelcost").value);
+    let mpg = parseFloat(document.getElementById("mpg").value);
+    let distance = parseFloat(document.getElementById("distance").value);
 
+    // Calculate the estimated cost
+    let estimatedCost = calculateEstimatedCost(fuelCost, mpg, distance);
 
-    let fuelcost= parseFloat(document.getElementById("fuelcost").value)
-    let mpg = parseFloat(document.getElementById("mpg").value)
-    let distance = parseFloat(document.getElementById("distance").value)
+    // Update the result in the DOM
+    updateResult(fuelCost, distance, mpg, estimatedCost);
+});
 
-    let result = document.getElementById("result")
+// Function to calculate the estimated cost
+function calculateEstimatedCost(fuelCost, mpg, distance) {
+    return fuelCost * distance / mpg;
+}
 
-    let estimatedCost = fuelcost*distance/mpg
+// Function to update the result in the DOM
+function updateResult(fuelCost, distance, mpg, estimatedCost) {
+    let result = document.getElementById("result");
+    result.innerHTML = generateResultHTML(fuelCost, distance, mpg, estimatedCost);
+}
 
-    // if(fuelcost || mpg || distance != typeof(0.01) || NaN){
-    //     result.innerHTML = `
-        
-    //     <h1 style="color:red; ">Error please input a valid number<h1/>
-        
-    //     `
-    // }
-    // else {
-    result.innerHTML= `
-    
-    <table>
-    <thead>
-        <tr>
-            <th>Fuel Cost</th>
-            <th>Distance</th>
-            <th>Average MPG</th>
-            <th>Estimated Cost</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>${fuelcost}</td>
-            <td>${distance}</td>
-            <td>${mpg}</td>
-            <td>${Math.round(estimatedCost)}</td>
-        </tr>       
-    </tbody>
-</table>
-
-
-    
-    `
-    // }
-
-
-    e.preventDefault()
-})
+// Function to generate the result HTML
+function generateResultHTML(fuelCost, distance, mpg, estimatedCost) {
+    return `
+        <table>
+            <thead>
+                <tr>
+                    <th>Fuel Cost</th>
+                    <th>Distance</th>
+                    <th>Average MPG</th>
+                    <th>Estimated Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${fuelCost.toFixed(2)}</td>
+                    <td>${distance.toFixed(2)}</td>
+                    <td>${mpg.toFixed(2)}</td>
+                    <td>${Math.round(estimatedCost)}</td>
+                </tr>       
+            </tbody>
+        </table>
+    `;
+}
