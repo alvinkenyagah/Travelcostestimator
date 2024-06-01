@@ -8,18 +8,18 @@ form.addEventListener("submit", (e)=>{
     let mpg = parseFloat(document.getElementById("mpg").value)
     let distance = parseFloat(document.getElementById("distance").value)
 
-    let result = parseFloat(document.getElementById("result"))
+    let result = document.getElementById("result")
 
     let estimatedCost = fuelcost*distance/mpg
 
-    if(fuelcost || mpg || distance != typeof(0.01) || NaN){
-        result.innerHTML = `
+    // if(fuelcost || mpg || distance != typeof(0.01) || NaN){
+    //     result.innerHTML = `
         
-        <h1 style="color:red; ">Error please input a valid number<h1/>
+    //     <h1 style="color:red; ">Error please input a valid number<h1/>
         
-        `
-    }
-    else {
+    //     `
+    // }
+    // else {
     result.innerHTML= `
     
     <table>
@@ -36,7 +36,7 @@ form.addEventListener("submit", (e)=>{
             <td>${fuelcost}</td>
             <td>${distance}</td>
             <td>${mpg}</td>
-            <td>${estimatedCost}</td>
+            <td>${Math.round(estimatedCost)}</td>
         </tr>       
     </tbody>
 </table>
@@ -44,7 +44,7 @@ form.addEventListener("submit", (e)=>{
 
     
     `
-    }
+    // }
 
 
     e.preventDefault()
